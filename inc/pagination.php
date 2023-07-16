@@ -1,5 +1,4 @@
 <?php
-
 // This ia a helper class to make paginating
 // records easy.
 class Pagination {
@@ -41,5 +40,3 @@ class Pagination {
 		return $this->next_page() <= $this->total_pages() ? true : false;	
 	}
 }
-
-?>

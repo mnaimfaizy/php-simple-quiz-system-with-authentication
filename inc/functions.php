@@ -1,10 +1,21 @@
 <?php
 /* --------- Main functions of the project ---------- */
-
 /* =======================================================
  * This function will remove the marked zeros and then remove
  * any remaining marks from date and return a clean date and
  * time to the user. */
+function get_full_url() {
+    // 1. write the http protocol
+    $full_url = "http://";
+
+// 2. check if your server use HTTPS
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] === "on") {
+        $full_url = "https://";
+    }
+
+    $full_url .= $_SERVER["HTTP_HOST"];
+    return $full_url;
+}
 function strip_zeros_from_date($maked_string="") {
 	// first remove the marked zeros
 	$no_zeros = str_replace('*0','', $maked_string);
@@ -18,8 +29,8 @@ function strip_zeros_from_date($maked_string="") {
  * is given while the function has been called. */
 function redirect_to( $location = NULL) {
 	if($location != NULL) {
-		header("Location: {$location}");
-		exit;	
+        header("Location: {$location}");
+        exit;
 	}
 }
 
@@ -152,5 +163,3 @@ function getIP() {
 	}
 	return $ip;
 }
-
-?>

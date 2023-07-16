@@ -1,10 +1,8 @@
 <?php
 // A class to help work with Sessions
 // In our case, primarily to manage logging users in and out
-
 // Keep in mind when working with sessions that it is generally
 // inadvisable to store DB-related objects in sessions
-	
 class Session {
 		private $logged_in = false;
 		public $user_id;
@@ -13,17 +11,21 @@ class Session {
 		public $group_id;
 		public $message;
 		public $position;
-		
-		function __construct() {
-			session_start();	
-			$this->check_login();
-			$this->check_message();
-			if($this->logged_in) {
-				// actions to take right away if user is logged in	
-			} else {
-				// actions to take right away if user is not logged in
-			}
-		}
+
+        function __construct() {
+            if (!headers_sent()) {
+                session_start();
+            }
+
+            $this->check_login();
+            $this->check_message();
+
+            if ($this->logged_in) {
+                // actions to take right away if user is logged in
+            } else {
+                // actions to take right away if user is not logged in
+            }
+        }
 		
 		/* ===============================================================
 		 * This function checks weather the user is logged in or not
@@ -56,7 +58,7 @@ class Session {
 			unset($this->user_id);
 			unset($this->group_id);
 			unset($this->position);
-			unset($_COOKKIE['login']);
+			unset($_COOKIE['login']);
 			$this->logged_in = false;	
 		}
 		
@@ -95,4 +97,3 @@ class Session {
 
 $session = new Session();
 $message = $session->message();
-?>

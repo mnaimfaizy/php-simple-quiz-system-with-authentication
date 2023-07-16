@@ -1,4 +1,3 @@
-
 <?php include_once('inc/head.php'); ?>
 <body class="theme-red">
     <!-- Overlay For Sidebars -->

@@ -1,5 +1,4 @@
 <?php
-
 class MySQLDatabase {
 
 	private $connection;
@@ -7,18 +6,19 @@ class MySQLDatabase {
 	private $magic_quotes_active;
 	private $real_escape_string;
 
-	function __construct() {
-		$this->open_connection();
-		$this->magic_quotes_active = get_magic_quotes_gpc();
-		$this->real_escape_string = function_exists("mysqli_real_escape_string");
-	}
+    function __construct() {
+        $this->open_connection();
+        $this->magic_quotes_active = (bool) ini_get('magic_quotes_gpc');
+        $this->real_escape_string = function_exists('mysqli_real_escape_string');
+    }
+
 
 	/* =========================================================================
 	 * This function will open a new connection to the database and will return
 	 * true if the connection was successful or false if unsuccessful.
 	 * */
 	public function open_connection() {
-		$this->connection = mysqli_connect('localhost', 'root', '', 'php_simple_quiz');
+		$this->connection = mysqli_connect('192.168.0.106', 'root', 'Kabul@123', 'php_quiz_db', 33068);
 		if(!$this->connection) {
 			die("Database connection failed: " . mysqli_error());
 		}
@@ -103,4 +103,3 @@ class MySQLDatabase {
 /* Instantiate a new object from the current class, which will be used in other pages */
 $database = new MySQLDatabase();
 $db =& $database;
-?>

@@ -1,13 +1,13 @@
-<?php define('DEBUG', true);
+<?php ob_start(); // Start output buffering
+const DEBUG = true;
 error_reporting(E_ALL);
-ini_set('display_errors', DEBUG ? 'on' : 'off'); ?>
-<?php date_default_timezone_set('Asia/Kabul'); ?>
-<?php require_once("inc/initialize.php"); ?>
-<?php if(!$session->is_logged_in() || !isset($_COOKIE['login'])) { redirect_to("login.php"); }
+ini_set('display_errors', DEBUG ? 'on' : 'off');
+date_default_timezone_set('Asia/Kabul');
+require_once("inc/initialize.php");
+if(!$session->is_logged_in() || !isset($_COOKIE['login'])) { redirect_to("login.php"); }
   //echo $session->is_logged_in();
   //echo $_COOKIE['login'];
-?>
-<?php $page_name = get_page_name();
+$page_name = get_page_name();
     // To fetch the group name of the user
     $query = "SELECT `group` FROM users WHERE id=".$_SESSION['user_id']." LIMIT 1";
     $res = $database->query($query);

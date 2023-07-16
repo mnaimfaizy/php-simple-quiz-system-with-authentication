@@ -1,0 +1,9 @@
+2023-07-15 17:49:03 | Login: admin loged in. 
+2023-07-16 18:19:42 | Logout: Administrator loged out. 
+2023-07-16 18:20:45 | Logout: Administrator loged out. 
+2023-07-16 18:20:52 | Login: admin loged in. 
+2023-07-16 18:20:58 | Logout: Administrator loged out. 
+2023-07-16 18:21:10 | Login: admin loged in. 
+2023-07-16 18:21:16 | Logout: Administrator loged out. 
+2023-07-16 18:22:24 | Login: guest loged in. 
+2023-07-16 18:24:58 | Logout: Standard User loged out. 

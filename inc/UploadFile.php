@@ -1,6 +1,5 @@
 <?php
 // namespace foundationphp;
-
 class UploadFile {
 	
 	protected $destination;
@@ -226,7 +225,4 @@ class UploadFile {
 			return false;
 		}
 	}
-	
-	
-		
 }

@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  php_quiz_app:
+    container_name: php_quiz_app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - php_quiz_db
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9002:80
+    networks:
+      - php_quiz_db_net
+
+  php_quiz_db:
+    container_name: php_quiz_db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "Kabul@123"
+      MYSQL_DATABASE: "php_quiz_db"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "Kabul@123"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "33068:3306"
+    networks:
+      - php_quiz_db_net
+
+volumes:
+  mysql_data:
+
+networks:
+  php_quiz_db_net:
